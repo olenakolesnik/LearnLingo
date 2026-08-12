@@ -33,6 +33,7 @@ body {
 }
 main {
   padding-bottom: 32px;
+  background-color: var(--color-background);
 }
 h1,
 h2,
