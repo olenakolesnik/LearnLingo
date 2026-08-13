@@ -1,14 +1,36 @@
 "use client";
 
 import {useEffect, useState} from "react";
+import Modal from "@/components/Modal/Modal";
+import LoginForm from "@/components/LoginForm/LoginForm";
+import RegisterForm from "@/components/RegisterForm/RegisterForm";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "../Container/Container";
 import Navigation from "../Navigation/Navigation";
 import css from "./Header.module.css";
+import { useAuthStore } from "@/store/authStore";
+import { logoutUser } from "@/services/auth";
 
 export default function Header() {
-   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const user = useAuthStore((state) => state.user);
+const isLoading = useAuthStore((state) => state.isLoading);
+  const handleLogout = async () => {
+  try {
+    await logoutUser();
+    closeMenu();
+  } catch (error) {
+    console.error("Failed to log out:", error);
+  }
+};
+  const [isLoginOpen, setIsLoginOpen] =
+  useState(false);
+
+const [
+  isRegistrationOpen,
+  setIsRegistrationOpen,
+] = useState(false); 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const closeMenu = () => {
     setIsMenuOpen(false);
@@ -31,7 +53,8 @@ export default function Header() {
       document.body.style.overflow = "";
     };
   }, [isMenuOpen]);
-    return (
+  return (
+      <>
     <header className={css.header}>
       <Container>
         <div className={css.wrapper}>
@@ -49,22 +72,51 @@ export default function Header() {
 <div className={css.navigation}>
           <Navigation />
 </div>
-          <div className={css.auth}>
-            <button type="button" className={css.login}>
-              <Image
+         <div className={css.auth}>
+  {!isLoading && (
+    <>
+      {user ? (
+        <>
+          <span className={css.userName}>
+            {user.displayName || user.email}
+          </span>
+
+          <button
+            type="button"
+            className={css.logout}
+            onClick={handleLogout}
+          >
+            Log out
+          </button>
+        </>
+      ) : (
+        <>
+          <button
+            type="button"
+            className={css.login}
+            onClick={() => setIsLoginOpen(true)}
+          >
+            <Image
               src="/icons/log-in-01.svg"
-              alt="Log in"
+              alt=""
               width={20}
               height={20}
-              priority
             />
-              Log in
-            </button>
+            Log in
+          </button>
 
-            <button type="button" className={css.register}>
-              Registration
-            </button>
-                    </div>
+          <button
+            type="button"
+            className={css.register}
+            onClick={() => setIsRegistrationOpen(true)}
+          >
+            Registration
+          </button>
+        </>
+      )}
+    </>
+  )}
+</div>
                <button
             type="button"
             className={css.burger}
@@ -102,29 +154,94 @@ export default function Header() {
                 Teachers
               </Link>
 
-              <Link href="/favorites" onClick={closeMenu}>
-                Favorites
-              </Link>
+              {user && (
+  <Link
+    href="/favorites"
+    onClick={closeMenu}
+  >
+    Favorites
+  </Link>
+)}
             </nav>
 
             <div className={css.mobileAuth}>
-              <button type="button" className={css.mobileLogin}>
-                <Image
-                  src="/icons/log-in-01.svg"
-                  alt=""
-                  width={20}
-                  height={20}
-                />
-                Log in
-              </button>
+  {user ? (
+    <>
+      <span className={css.mobileUserName}>
+        {user.displayName || user.email}
+      </span>
 
-              <button type="button" className={css.mobileRegister}>
-                Registration
-              </button>
-            </div>
+      <button
+        type="button"
+        className={css.mobileLogout}
+        onClick={handleLogout}
+      >
+        Log out
+      </button>
+    </>
+  ) : (
+    <>
+      <button
+        type="button"
+        className={css.mobileLogin}
+        onClick={() => {
+          closeMenu();
+          setIsLoginOpen(true);
+        }}
+      >
+        <Image
+          src="/icons/log-in-01.svg"
+          alt=""
+          width={20}
+          height={20}
+        />
+        Log in
+      </button>
+
+      <button
+        type="button"
+        className={css.mobileRegister}
+        onClick={() => {
+          closeMenu();
+          setIsRegistrationOpen(true);
+        }}
+      >
+        Registration
+      </button>
+    </>
+  )}
+</div>
           </div>
         </div>
       )}
-    </header>
+      </header>
+        {isLoginOpen && (
+      <Modal
+        onClose={() =>
+          setIsLoginOpen(false)
+        }
+      >
+        <LoginForm
+          onSuccess={() =>
+            setIsLoginOpen(false)
+          }
+        />
+      </Modal>
+    )}
+
+    {isRegistrationOpen && (
+      <Modal
+        onClose={() =>
+          setIsRegistrationOpen(false)
+        }
+      >
+        <RegisterForm
+          onSuccess={() =>
+            setIsRegistrationOpen(false)
+          }
+        />
+      </Modal>
+    )}
+  </>
   );
 }
