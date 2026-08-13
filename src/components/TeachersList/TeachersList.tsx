@@ -1,33 +1,25 @@
-"use client";
-
-import { useState } from "react";
 import TeacherCard from "@/components/TeacherCard/TeacherCard";
 import { Teacher } from "@/types/teacher";
+
 import css from "./TeachersList.module.css";
 
 interface TeachersListProps {
   teachers: Teacher[];
+  hasMore: boolean;
+  isLoadingMore: boolean;
+  onLoadMore: () => void;
 }
-
-const ITEMS_PER_PAGE = 4;
 
 export default function TeachersList({
   teachers,
+  hasMore,
+  isLoadingMore,
+  onLoadMore,
 }: TeachersListProps) {
-  const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
-
-  const visibleTeachers = teachers.slice(0, visibleCount);
-
-  const hasMore = visibleCount < teachers.length;
-
-  const handleLoadMore = () => {
-    setVisibleCount((prev) => prev + ITEMS_PER_PAGE);
-  };
-
   return (
     <>
       <ul className={css.list}>
-        {visibleTeachers.map((teacher) => (
+        {teachers.map((teacher) => (
           <li key={teacher.id}>
             <TeacherCard teacher={teacher} />
           </li>
@@ -38,9 +30,12 @@ export default function TeachersList({
         <button
           type="button"
           className={css.loadMore}
-          onClick={handleLoadMore}
+          onClick={onLoadMore}
+          disabled={isLoadingMore}
         >
-          Load more
+          {isLoadingMore
+            ? "Loading..."
+            : "Load more"}
         </button>
       )}
     </>
