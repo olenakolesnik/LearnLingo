@@ -38,14 +38,15 @@ export default function TeacherCard({
           </div>
 
                   <div className={css.stats}>
-                       <Image
+                      <span className={css.statItem}>
+                      <Image
                                     src="/icons/book-open-01.svg"
                                     alt="Lessons online"
                                     width={16}
                                     height={16}
                                     priority
                                   />
-            <span>Lessons online</span>
+            Lessons online</span>
 
             <span className={css.divider}></span>
 
@@ -54,14 +55,15 @@ export default function TeacherCard({
             </span>
 
             <span className={css.divider}></span>
- <Image
+ <span className={css.statItem}>
+                      <Image
                                     src="/icons/star.svg"
                                     alt="Rating"
                                     width={16}
                                     height={16}
                                     priority
                                   />
-            <span>
+            
                Rating: {teacher.rating}
             </span>
 

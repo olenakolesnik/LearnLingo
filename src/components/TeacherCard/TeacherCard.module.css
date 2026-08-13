@@ -264,3 +264,163 @@ align-items: flex-start;
 .bookButton:focus {
     background-color: var(--color-primary-light);
 }
+.statItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+/* Tablet */
+@media (max-width: 1100px) {
+    .card {
+        gap: 32px;
+        padding: 24px;
+    }
+
+    .top {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .stats {
+        order: 3;
+
+        width: 100%;
+        margin-left: 0;
+
+        flex-wrap: wrap;
+        gap: 12px 16px;
+    }
+
+    .favoriteButton {
+        margin-left: auto;
+    }
+
+    .info {
+        font-size: 15px;
+    }
+
+    .levels {
+        gap: 8px;
+    }
+}
+@media (max-width: 768px) {
+    .card {
+        position: relative;
+
+        flex-direction: column;
+        gap: 24px;
+
+        padding: 20px;
+
+        border-radius: 20px;
+    }
+
+    .avatarWrapper {
+        width: 96px;
+        height: 96px;
+
+        padding: 6px;
+    }
+
+    .online {
+        top: 12px;
+        right: 6px;
+    }
+
+    .content {
+        width: 100%;
+    }
+
+    .top {
+        display: block;
+
+        margin-bottom: 24px;
+    }
+
+    .label {
+        margin-bottom: 6px;
+
+        font-size: 14px;
+    }
+
+    .name {
+        font-size: 22px;
+        line-height: 1.2;
+    }
+
+    .stats {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        width: 100%;
+        margin-top: 20px;
+
+        gap: 10px;
+
+        white-space: normal;
+    }
+
+    .divider {
+        display: none;
+    }
+
+    .favoriteButton {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+
+        width: 32px;
+        height: 32px;
+    }
+
+    .info {
+        gap: 10px;
+
+        margin-bottom: 20px;
+
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .readMore {
+        margin-bottom: 24px;
+    }
+
+    .levels {
+        gap: 8px;
+    }
+
+    .level {
+        padding: 7px 12px;
+
+        font-size: 13px;
+    }
+
+    .experience {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .reviewComment {
+        font-size: 14px;
+    }
+
+    .bookButton {
+        width: 100%;
+        min-width: 0;
+
+        margin-top: 24px;
+    }
+}
+@media (max-width: 768px) {
+    .statItem {
+        display: flex;
+    }
+         .stats {
+             display: grid;
+             grid-template-columns: 1fr 1fr;
+    
+             gap: 12px 16px;
+         }
+}

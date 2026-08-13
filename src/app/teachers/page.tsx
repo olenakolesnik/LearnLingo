@@ -1,12 +1,14 @@
 import Container from "@/components/Container/Container";
-import TeacherCard from "@/components/TeacherCard/TeacherCard";
+import TeachersList from "@/components/TeachersList/TeachersList";
 import { teachers } from "@/data/teachers";
-
+import css from "./TeachersPage.module.css";
+import TeachersFilters from "@/components/TeachersFilters/TeachersFilters";
 export default function TeachersPage() {
   return (
-    <main>
+    <main className={css.page}>
       <Container>
-        <TeacherCard teacher={teachers[0]} />
+        <TeachersFilters/>
+        <TeachersList teachers={teachers} />
       </Container>
     </main>
   );
