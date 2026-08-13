@@ -70,3 +70,30 @@ export async function getTeachersPage(
     hasMore,
   };
 }
+export async function getTeachersByIds(
+  ids: string[]
+): Promise<Teacher[]> {
+  if (ids.length === 0) {
+    return [];
+  }
+
+  const requests = ids.map(async (id) => {
+    const teacherRef = ref(database, id);
+    const snapshot = await get(teacherRef);
+
+    if (!snapshot.exists()) {
+      return null;
+    }
+
+    return {
+      id: snapshot.key,
+      ...(snapshot.val() as Omit<Teacher, "id">),
+    };
+  });
+
+  const results = await Promise.all(requests);
+
+  return results.filter(
+    (teacher): teacher is Teacher => teacher !== null
+  );
+}

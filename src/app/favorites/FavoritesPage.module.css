@@ -1,0 +1,22 @@
+.page {
+    min-height: 100vh;
+
+    padding-top: 96px;
+    padding-bottom: 96px;
+
+    background-color: #f8f8f8;
+}
+
+@media (max-width: 1024px) {
+    .page {
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+}
