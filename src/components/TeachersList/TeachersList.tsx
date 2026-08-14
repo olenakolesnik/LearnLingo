@@ -16,6 +16,14 @@ export default function TeachersList({
   isLoadingMore,
   onLoadMore,
 }: TeachersListProps) {
+  if (teachers.length === 0) {
+    return (
+      <p className={css.empty}>
+        No teachers found matching your filters.
+      </p>
+    );
+  }
+
   return (
     <>
       <ul className={css.list}>
@@ -33,9 +41,7 @@ export default function TeachersList({
           onClick={onLoadMore}
           disabled={isLoadingMore}
         >
-          {isLoadingMore
-            ? "Loading..."
-            : "Load more"}
+          {isLoadingMore ? "Loading..." : "Load more"}
         </button>
       )}
     </>

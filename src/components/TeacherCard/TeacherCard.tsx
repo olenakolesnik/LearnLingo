@@ -12,6 +12,8 @@ import toast from "react-hot-toast";
 import { useAuthStore } from "@/store/authStore";
 import { useFavoritesStore } from "@/store/favoritesStore";
 import { Heart } from "lucide-react";
+import Modal from "@/components/Modal/Modal";
+import BookingForm from "@/components/BookingForm/BookingForm";
 
 interface TeacherCardProps {
   teacher: Teacher;
@@ -74,7 +76,10 @@ const isFavorite =
   }
 };
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isBookingOpen, setIsBookingOpen] =
+  useState(false);
   return (
+    <>
     <article className={css.card}>
       <div className={css.avatarWrapper}>
         <Image
@@ -246,11 +251,24 @@ const isFavorite =
   <button
     type="button"
     className={css.bookButton}
-  >
+  onClick={() => setIsBookingOpen(true)}
+          >
     Book trial lesson
   </button>
-)}
+        )}
+    
       </div>
     </article>
+        {isBookingOpen && (
+  <Modal
+    onClose={() => setIsBookingOpen(false)}
+  >
+    <BookingForm
+      teacher={teacher}
+      onSuccess={() => setIsBookingOpen(false)}
+    />
+  </Modal>
+      )}
+      </>
   );
 }

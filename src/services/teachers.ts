@@ -97,3 +97,23 @@ export async function getTeachersByIds(
     (teacher): teacher is Teacher => teacher !== null
   );
 }
+export async function getAllTeachers(): Promise<Teacher[]> {
+  const teachersRef = ref(database, "/");
+
+  const snapshot = await get(teachersRef);
+
+  if (!snapshot.exists()) {
+    return [];
+  }
+
+  const teachers: Teacher[] = [];
+
+  snapshot.forEach((childSnapshot) => {
+    teachers.push({
+      id: childSnapshot.key,
+      ...(childSnapshot.val() as Omit<Teacher, "id">),
+    });
+  });
+
+  return teachers;
+}

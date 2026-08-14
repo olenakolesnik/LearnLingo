@@ -1,36 +1,220 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LearnLingo
 
-## Getting Started
+LearnLingo is a modern web application for finding online language teachers. Users can browse teachers, filter them by language, student level, and lesson price, add favorite teachers, and book a trial lesson.
 
-First, run the development server:
+The project was built with **Next.js**, **TypeScript**, and **Firebase**, following a responsive design and modern frontend development practices.
+
+---
+
+## Live Demo
+
+🔗
+
+---
+
+## Repository
+
+🔗 https://github.com/olenakolesnik/LearnLingo
+
+---
+
+## Features
+
+- User registration and login with Firebase Authentication
+- Persistent authentication state
+- Browse teachers
+- Load More pagination
+- Filter teachers by:
+  - Language
+  - Student level
+  - Price range
+- Add and remove favorite teachers
+- Private Favorites page
+- Book trial lesson modal
+- Responsive design
+- Toast notifications
+- Form validation
+- Modern UI
+
+---
+
+## Tech Stack
+
+### Frontend
+
+- Next.js (App Router)
+- React
+- TypeScript
+- CSS Modules
+
+### State Management
+
+- Zustand
+
+### Backend
+
+- Firebase Realtime Database
+- Firebase Authentication
+
+### Forms
+
+- React Hook Form
+- Yup
+
+### UI
+
+- Lucide React
+- React Hot Toast
+
+---
+
+## Project Structure
+
+```text
+src
+│
+├── app
+│
+├── components
+│
+├── services
+│
+├── store
+│
+├── schemas
+│
+├── types
+│
+└── styles
+```
+
+---
+
+## Pages
+
+### Home
+
+- Hero section
+- Company advantages
+- Navigation to Teachers page
+
+### Teachers
+
+- Teachers list
+- Dynamic filters
+- Pagination
+- Read more
+- Favorites
+- Book trial lesson
+
+### Favorites
+
+Private page available only for authenticated users.
+
+---
+
+## Authentication
+
+Implemented with Firebase Authentication.
+
+Features:
+
+- Registration
+- Login
+- Logout
+- Current user
+- Protected Favorites page
+
+---
+
+## Database
+
+Firebase Realtime Database stores:
+
+- Teachers
+- User favorites
+
+---
+
+## Responsive Design
+
+The application is fully responsive and optimized for:
+
+- Desktop
+- Tablet
+- Mobile
+
+---
+
+## Design
+
+Figma design provided in the task.
+
+---
+
+## Technical Requirements
+
+Implemented according to the project requirements:
+
+- Firebase Authentication
+- Firebase Realtime Database
+- Teachers filtering
+- Pagination
+- Favorites
+- Private route
+- Trial lesson booking
+- Responsive layout
+- Form validation
+- Toast notifications
+
+---
+
+## Installation
+
+Clone repository
+
+```bash
+git clone https://github.com/yourusername/learnlingo.git
+```
+
+Go to project folder
+
+```bash
+cd learnlingo
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Create `.env.local`
+
+```env
+NEXT_PUBLIC_FIREBASE_API_KEY=
+
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+
+NEXT_PUBLIC_FIREBASE_DATABASE_URL=
+
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+
+NEXT_PUBLIC_FIREBASE_APP_ID=
+```
+
+Run development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Author
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Olena

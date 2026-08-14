@@ -2,12 +2,8 @@
 
 import { useState } from "react";
 import css from "./TeachersFilters.module.css";
+import { Filters } from "@/types/filters";
 
-export interface Filters {
-  language: string;
-  level: string;
-  price: string;
-}
 
 interface TeachersFiltersProps {
   onChange?: (filters: Filters) => void;
@@ -28,7 +24,9 @@ const levels = [
   "A1 Beginner",
   "A2 Elementary",
   "B1 Intermediate",
-  "B2 Upper-Intermediate",
+    "B2 Upper-Intermediate",
+    "C1 Advanced",
+  "C2 Proficient",
 ];
 
 const prices = ["10", "20", "30", "40"];
