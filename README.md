@@ -8,7 +8,7 @@ The project was built with **Next.js**, **TypeScript**, and **Firebase**, follow
 
 ## Live Demo
 
-🔗
+🔗https://learn-lingo-rosy-six.vercel.app
 
 ---
 
