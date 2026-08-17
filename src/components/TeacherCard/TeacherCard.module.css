@@ -71,6 +71,7 @@ align-items: flex-start;
     font-size: 24px;
     font-weight: 500;
     line-height: 1;
+    font-family: var(--font-roboto);
 }
 
 .stats {
@@ -79,7 +80,7 @@ align-items: flex-start;
     gap: 16px;
 
     margin-left: auto;
-
+font-family: var(--font-roboto);
     font-size: 16px;
     font-weight: 500;
     white-space: nowrap;
@@ -118,7 +119,7 @@ align-items: flex-start;
     gap: 8px;
 
     margin-bottom: 16px;
-
+font-family: var(--font-roboto);
     font-size: 16px;
     line-height: 1.5;
 }
@@ -128,6 +129,7 @@ align-items: flex-start;
 }
 
 .languages {
+    font-family: var(--font-roboto);
     font-weight: 500;
     text-decoration: underline;
 }
@@ -135,7 +137,7 @@ align-items: flex-start;
 .readMore {
     padding: 0;
     margin-bottom: 32px;
-
+font-family: var(--font-roboto);
     font-size: 16px;
     font-weight: 500;
 
@@ -155,7 +157,7 @@ align-items: flex-start;
 
 .level {
     padding: 8px 12px;
-
+font-family: var(--font-roboto);
     font-size: 14px;
     font-weight: 500;
 
@@ -173,7 +175,7 @@ align-items: flex-start;
 
 .experience {
     margin-bottom: 32px;
-
+font-family: var(--font-roboto);
     font-size: 16px;
     line-height: 1.5;
 
@@ -205,7 +207,7 @@ align-items: flex-start;
     height: 44px;
 
     flex-shrink: 0;
-
+font-family: var(--font-roboto);
     font-size: 18px;
     font-weight: 500;
 
@@ -215,7 +217,7 @@ align-items: flex-start;
 
 .reviewerName {
     margin-bottom: 4px;
-
+font-family: var(--font-roboto);
     font-size: 16px;
     font-weight: 500;
 
@@ -226,7 +228,7 @@ align-items: flex-start;
     display: flex;
     align-items: center;
     gap: 8px;
-
+font-family: var(--font-roboto);
     font-size: 14px;
     font-weight: 500;
 }
@@ -234,6 +236,7 @@ align-items: flex-start;
 .reviewComment {
     font-size: 16px;
     line-height: 1.5;
+    font-family: var(--font-roboto);
 }
 
 .bookButton {
@@ -246,7 +249,7 @@ align-items: flex-start;
 
     margin-top: 32px;
     padding: 16px 32px;
-
+font-family: var(--font-roboto);
     font-size: 18px;
     font-weight: 700;
 

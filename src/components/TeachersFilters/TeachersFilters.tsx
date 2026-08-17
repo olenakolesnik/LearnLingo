@@ -3,7 +3,7 @@
 import { useState } from "react";
 import css from "./TeachersFilters.module.css";
 import { Filters } from "@/types/filters";
-
+import CustomSelect from "../CustomSelect/CustomSelect";
 
 interface TeachersFiltersProps {
   onChange?: (filters: Filters) => void;
@@ -24,8 +24,8 @@ const levels = [
   "A1 Beginner",
   "A2 Elementary",
   "B1 Intermediate",
-    "B2 Upper-Intermediate",
-    "C1 Advanced",
+  "B2 Upper-Intermediate",
+  "C1 Advanced",
   "C2 Proficient",
 ];
 
@@ -55,92 +55,36 @@ export default function TeachersFilters({
 
   return (
     <div className={css.filters}>
-      <div className={css.field}>
-        <label
-          htmlFor="language"
-          className={css.label}
-        >
-          Languages
-        </label>
+      <CustomSelect
+        label="Languages"
+        value={filters.language}
+        options={languages}
+        placeholder="All languages"
+        onChange={(value) =>
+          handleChange("language", value)
+        }
+      />
 
-        <select
-          id="language"
-          value={filters.language}
-          onChange={(event) =>
-            handleChange("language", event.target.value)
-          }
-          className={css.select}
-        >
-          <option value="">All languages</option>
+      <CustomSelect
+        label="Level of knowledge"
+        value={filters.level}
+        options={levels}
+        placeholder="All levels"
+        onChange={(value) =>
+          handleChange("level", value)
+        }
+      />
 
-          {languages.map((language) => (
-            <option
-              value={language}
-              key={language}
-            >
-              {language}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div className={css.field}>
-        <label
-          htmlFor="level"
-          className={css.label}
-        >
-          Level of knowledge
-        </label>
-
-        <select
-          id="level"
-          value={filters.level}
-          onChange={(event) =>
-            handleChange("level", event.target.value)
-          }
-          className={css.select}
-        >
-          <option value="">All levels</option>
-
-          {levels.map((level) => (
-            <option
-              value={level}
-              key={level}
-            >
-              {level}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div className={css.field}>
-        <label
-          htmlFor="price"
-          className={css.label}
-        >
-          Price
-        </label>
-
-        <select
-          id="price"
-          value={filters.price}
-          onChange={(event) =>
-            handleChange("price", event.target.value)
-          }
-          className={`${css.select} ${css.priceSelect}`}
-        >
-          <option value="">All prices</option>
-
-          {prices.map((price) => (
-            <option
-              value={price}
-              key={price}
-            >
-              {price} $
-            </option>
-          ))}
-        </select>
-      </div>
+      <CustomSelect
+        label="Price"
+        value={filters.price}
+        options={prices}
+        placeholder="All prices"
+        onChange={(value) =>
+          handleChange("price", value)
+        }
+        formatOption={(price) => `${price} $`}
+      />
     </div>
   );
 }
